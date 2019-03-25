@@ -26,6 +26,12 @@ Vagrant.configure("2") do |config|
   echo "192.168.56.111 manager1" >> /etc/hosts
   echo "192.168.56.112 worker1" >> /etc/hosts
   echo "192.168.56.113 worker2" >> /etc/hosts
+  export DEBIAN_FRONTEND=noninteractive
+  apt-get update
+  apt-get upgrade -y
+  curl -fsSL https://get.docker.com/  | awk 'NR==3{print "export DEBIAN_FRONTEND=noninteractive"}1' | sh
+  usermod -aG docker vagrant
+  systemctl restart docker
   SCRIPT
 
   config.vm.provision "shell", inline: $script, privileged: true
