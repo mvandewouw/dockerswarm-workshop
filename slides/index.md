@@ -82,7 +82,7 @@ Note: tst
 
 ---
 
-### Setup script ###
+### Setup scripts ###
 
 ```
 echo "192.168.56.111 manager1" >> /etc/hosts
@@ -101,6 +101,23 @@ chmod +x /usr/local/bin/docker-compose
 ```
 
 Note: tst
+
+---
+
+### Complete the setup of a swarm mode cluster, with managers and worker nodes ###
+
+```
+
+docker swarm init --advertise-addr 192.168.56.111
+clear
+```
+Dus, hoe kunnen deze token weer achterhalen?
+
+---
+
+---
+
+---
 
 ---
 

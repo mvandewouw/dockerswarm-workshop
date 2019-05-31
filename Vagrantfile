@@ -11,28 +11,42 @@ Vagrant.configure("2") do |config|
     manager.vm.network "private_network", ip: '192.168.56.112'
   end
 
+  config.vm.define "manager3" do |manager|
+    manager.vm.box = "ubuntu/bionic64"
+    manager.vm.hostname = "manager3"
+    manager.vm.network "private_network", ip: '192.168.56.113'
+  end
+
   config.vm.define "worker1" do |worker|
     worker.vm.box = "ubuntu/bionic64"
     worker.vm.hostname = "worker1"
-    worker.vm.network "private_network", ip: '192.168.56.113'
+    worker.vm.network "private_network", ip: '192.168.56.114'
   end
 
   config.vm.define "worker2" do |worker|
     worker.vm.box = "ubuntu/bionic64"
     worker.vm.hostname = "worker2"
-    worker.vm.network "private_network", ip: '192.168.56.114'
+    worker.vm.network "private_network", ip: '192.168.56.115'
+  end
+
+  config.vm.define "worker3" do |worker|
+    worker.vm.box = "ubuntu/bionic64"
+    worker.vm.hostname = "worker3"
+    worker.vm.network "private_network", ip: '192.168.56.116'
   end
 
   config.vm.provider "virtualbox" do |v|
-    v.memory = 4096
-    v.cpus = 4
+    v.memory = 2048
+    v.cpus = 2
   end
 
   $script = <<-SCRIPT
   echo "192.168.56.111 manager1" >> /etc/hosts
   echo "192.168.56.112 manager2" >> /etc/hosts
-  echo "192.168.56.113 worker1" >> /etc/hosts
+  echo "192.168.56.113 manager3" >> /etc/hosts
+  echo "192.168.56.114 worker1" >> /etc/hosts
   echo "192.168.56.114 worker2" >> /etc/hosts
+  echo "192.168.56.114 worker3" >> /etc/hosts
   export DEBIAN_FRONTEND=noninteractive
   apt-get update
   apt-get upgrade -y
