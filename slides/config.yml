@@ -1,0 +1,5 @@
+revealjs_config:
+  autoSlide: 5000
+  loop: true
+  parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'
+
