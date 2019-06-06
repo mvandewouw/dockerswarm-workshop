@@ -45,8 +45,8 @@ Vagrant.configure("2") do |config|
   echo "192.168.56.112 manager2" >> /etc/hosts
   echo "192.168.56.113 manager3" >> /etc/hosts
   echo "192.168.56.114 worker1" >> /etc/hosts
-  echo "192.168.56.114 worker2" >> /etc/hosts
-  echo "192.168.56.114 worker3" >> /etc/hosts
+  echo "192.168.56.115 worker2" >> /etc/hosts
+  echo "192.168.56.116 worker3" >> /etc/hosts
   export DEBIAN_FRONTEND=noninteractive
   apt-get update
   apt-get upgrade -y
@@ -56,6 +56,7 @@ Vagrant.configure("2") do |config|
   systemctl restart docker
   curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   chmod +x /usr/local/bin/docker-compose
+  reboot
   SCRIPT
 
   config.vm.provision "shell", inline: $script, privileged: true
